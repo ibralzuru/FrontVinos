@@ -8,7 +8,7 @@ import Product from './Product';
 
 
 
-export default function Navbar() {
+export default function Products() {
 
 
     const Item = styled(Paper)(({ theme }) => ({
@@ -18,13 +18,13 @@ export default function Navbar() {
         textAlign: 'center',
         color: theme.palette.text.secondary,
     }));
-
+ 
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 6, sm: 12, md: 12 }}>
-                {Array.from(Array(9)).map((_, index) => (
-                    <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid container spacing={{ xs: 2, md: 2, sm:2 }} columns={{ xs: 12, sm: 12, md: 12, lg:16 }}>
+                {Array.from(Array(10)).map((_, index) => (
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                         <Product/>
                     </Grid>
                 ))}
