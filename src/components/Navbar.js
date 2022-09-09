@@ -16,7 +16,7 @@ export default function Navbar() {
             <AppBar position="sticky">
                 <Toolbar>
                     <IconButton
- 
+
                         size="large"
                         edge="start"
                         color="inherit"
@@ -33,10 +33,7 @@ export default function Navbar() {
                         <Badge badgeContent={21}>
                             <ShoppingCart />
                         </Badge>
-
                     </IconButton>
-
-
                 </Toolbar>
             </AppBar>
         </Box>
