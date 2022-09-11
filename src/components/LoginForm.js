@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button, Stack, Box } from '@mui/material'
 
-const FormularioRegistro = () => {
+const LoginForm = () => {
   /*   const [datos, setDatos] = useState({
         nombre:'',
         apellido:''
@@ -16,18 +16,16 @@ const FormularioRegistro = () => {
       minHeight="100vh"
       minWidth="600px"
     >
-      <h1>Crear cuenta</h1>
+      <h1>Iniciar Sesión</h1>
       <form>
         <Stack spacing={4}>
           <Input variant='filled' placeholder='email' />
           <Input variant='filled' placeholder='password' />
-          <Button variant="contained">Crear cuenta</Button>
+          <Button variant="contained">Iniciar sesión</Button>
         </Stack>
       </form>
     </Box>
   );
 }
 
-export default FormularioRegistro;
-
-
+export default LoginForm;

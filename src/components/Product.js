@@ -13,12 +13,7 @@ import { AddShoppingCart } from '@mui/icons-material';
 import accounting from "accounting";
 //import { Rating } from '@mui/material';
 
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
+const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -45,7 +40,7 @@ export default function Product() {
             variant='h5'
             color='textSecondary'
           >
-            {accounting.formatMoney(8,"€")}
+            {accounting.formatMoney(8, "€")}
           </Typography>
         }
         title="Celeste"
@@ -94,7 +89,7 @@ export default function Product() {
             Graduación: 13,5% vol.
           </Typography>
           <Typography paragraph>
-          Origen: DO Ribera del Duero.
+            Origen: DO Ribera del Duero.
             Puede disfrutarlo desde ahora, bien conservado aguantará 3-5 años.
             Graduación: 13,5% vol.
           </Typography>

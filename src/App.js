@@ -1,30 +1,20 @@
-//import Product from "./components/Product";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
-import './App.css';
-import Formulario from "./components/Formulario";
+import LoginForm from "./components/LoginForm";
 import FormularioRegistro from "./components/user/FormularioRegistro";
-import { Routes, Route, /* Link, Switch */} from "react-router-dom";
+import './App.css';
 
-
-
-function App() {
+export default function App() {
   return (
     <div className="App">
-      
       <Navbar />
-     {/*  <Products />
-      <Product /> */}
+
       <Routes>
         <Route path="/" element={<Products />} />
         <Route path="/registro" element={<FormularioRegistro />} />
-        <Route path="/formulario" element={<Formulario />} />
-      
+        <Route path="/login" element={<LoginForm />} />
       </Routes >
-
     </div >
   );
 }
-
-
-export default App;
