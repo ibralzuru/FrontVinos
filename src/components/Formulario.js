@@ -1,13 +1,13 @@
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 
 const Formulario = () => {
 
-    const [datos, setDatos] = useState({
+  /*   const [datos, setDatos] = useState({
         nombre:'',
         apellido:''
-    })
+    }) */
 
 
     return (

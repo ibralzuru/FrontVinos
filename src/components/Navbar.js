@@ -29,6 +29,7 @@ export default function Navbar() {
                         The Win-Nard
                     </Typography>
                     <Button color="inherit"> <strong>Register</strong></Button>
+                    <Button color="inherit"> <strong>Login</strong></Button>
                     <IconButton color="inherit">
                         <Badge badgeContent={21}>
                             <ShoppingCart />
