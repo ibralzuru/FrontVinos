@@ -13,19 +13,21 @@ import { Badge } from '@mui/material';
 export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky">
+      <AppBar position="static">
         <Toolbar>
           <IconButton
+            
             size="large"
             edge="start"
-            color="inherit"
+            color="warning"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            
+            sx={{ mr: 7 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton >
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            The Win-Nard
+            Wine Virtual
           </Typography>
           <Button >
             <Link style={{ textDecoration: 'none', color: 'white', fontWeight: '600' }} to='/'>
@@ -42,6 +44,12 @@ export default function Navbar() {
               Login
             </Link>
           </Button>
+          <Button >
+            <Link style={{ textDecoration: 'none', color: 'white', fontWeight: '600' }} to='/carrito'>
+              Carrito
+            </Link>
+          </Button>
+          
           <IconButton color="inherit">
             <Badge badgeContent={21}>
               <ShoppingCart />

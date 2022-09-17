@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Stack, Box } from '@mui/material'
+import { Input, Button, Stack, Box, Typography } from '@mui/material'
 
 const LoginForm = () => {
   /*   const [datos, setDatos] = useState({
@@ -16,7 +16,9 @@ const LoginForm = () => {
       minHeight="100vh"
       minWidth="600px"
     >
-      <h1>Iniciar Sesión</h1>
+      <Typography variant="h3" color="ActiveBorder" paddingBottom={10} >
+        Iniciar Sesión
+      </Typography>
       <form>
         <Stack spacing={4}>
           <Input variant='filled' placeholder='email' />
