@@ -13,7 +13,7 @@ import { Badge } from '@mui/material';
 export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
+      <AppBar position="relative">
         <Toolbar>
           <IconButton
             

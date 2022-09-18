@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {  Button, Stack,  Typography, TextField, Box } from '@mui/material'
+import { Button, Stack, Typography, TextField, Box } from '@mui/material'
+
 
 
 
@@ -85,7 +86,7 @@ const FormularioRegistro = (props) => {
         }
 
         //enviamos los datos a la base de datos 
-        let intentoRegistro = await axios.post("localhost:8000/api/register", userDades);
+        let intentoRegistro = await axios.post("http://localhost:8000/api/register", userDades);
 
         //si el registro realizado es correcto, es decir es igual a un 200, nos 
         //redirigira al side Login para que te logees en la web
@@ -110,39 +111,48 @@ const FormularioRegistro = (props) => {
 
     } else {
         return (
-            <Box
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                minHeight="100vh"
-                minWidth="600px"
-            >
-                <Typography variant="h4" color="ActiveBorder" paddingBottom={10} >
-                    Crea tu cuenta
-                </Typography>
+            <div className='registerDesign'>
+                <div className='subRegisterDesign'>
+                    <div className='divtitle'>
+                        <h3>Formulario de Registro</h3>
+                    </div>
+                    <div className='divInputs'>
+                        <div className="registerRight">
+                            <input className='bottonDesign' placeholder='name' type='text' name='name' title='name' onChange={updateUserDades} />
+                            <input className='bottonDesign' placeholder='email' type='email' name='email' title='email' onChange={updateUserDades} />
+                            <input className='bottonDesign' placeholder='Password' type='password' name='password' title='password' onChange={updateUserDades} />
+                            <input className='bottonDesign' placeholder='address' type='text' name='address' title='address' onChange={updateUserDades} />
 
-           
-                    <Stack spacing={4}>
 
-                        {/*  <Input variant='filled' placeholder='user name' /> */}
-                        <TextField variant='filled'type="string"id="standard-name" label="Name"  placeholder='name'onChange={updateUserDades} required />
-                        <TextField variant='filled'type="string" placeholder='email'id="email" label="Email" onChange={updateUserDades}required />
-                         
-                        {/*
-                        
-                        
-                        <Input variant='filled' placeholder='password' name="password" inputProps={onChange={updateUserDades}} required/>
-                  <Input variant='filled' placeholder='address' name="address" inputProps={onChange={updateUserDades}} required/>
-                  <Input variant='filled' placeholder='phoneNumber' name="phoneNumber" inputProps={onChange={updateUserDades}} required/>
-                  <Input variant='filled' placeholder='apellido' name="apellido" inputProps={onChange={updateUserDades}} required/>
-                  <Input variant='filled' placeholder='segundoApellido' name="segundoApellido" onChange={updateUserDades} required/> */}
 
-                        <Button variant="outlined" onClick={() => Registrate()}>Crear cuenta</Button>
-                    </Stack>
-             
-            </Box>
-        );
+                        </div>
+                        <div className="registerRight">
+                            <input className='bottonDesign' placeholder='phoneNumber' type='text' name='phoneNumber' title='phoneNumber' onChange={updateUserDades} />
+                            <input className='bottonDesign' placeholder='apellido' type='text' name='apellido' title='apellido' onChange={updateUserDades} />
+                            <input className="bottonDesign" placeholder='segundoApellido' type='text' name='segundoApellido' title='segundoApellido' onChange={updateUserDades} />
+
+                        </div>
+
+                    </div>
+                    <div className="designMessageError">
+                        {msgError}
+                    </div>
+                    <div className='divBotton'>
+                        <div className="bottonDesignRegister" >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <a onClick={() => Registrate()}> REGISTRATE</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        )
 
 
     }

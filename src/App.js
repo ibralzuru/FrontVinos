@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import LoginForm from "./components/LoginForm";
@@ -7,6 +7,7 @@ import FormularioRegistro from "./components/user/FormularioRegistro";
 import './App.css';
 import ProductDetail from "./containers/ProductDetail/ProductDetail";
 import { Container } from "@mui/system";
+import MenuBurguer from "./components/menuBurguer/MenuBurguer";
 
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
           <Route path="/detalle" element={<ProductDetail />} />
         </Routes >
       </Container>
+      <MenuBurguer />
+
+
     </div >
   );
 }
