@@ -1,34 +1,32 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Product from '../Product';
+import { Typography } from '@mui/material';
 
-export default function MediaCard() {
+const Carrito = () => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+
+
+    
+    <Box sx={{ flexGrow: 1 }}>
+
+<Typography variant="h4" color="ActiveBorder" textAlign={"center"} padding={4}  >
+        Su compra 
+      </Typography>
+
+
+
+
+      <Grid container spacing={{ xs: 2, md: 2, sm: 2 }} columns={{ xs: 12, sm: 12, md: 12, lg: 16 }}>
+        {Array.from(Array(10)).map((_, index) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Product />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  )
 }
 
+export default Carrito;

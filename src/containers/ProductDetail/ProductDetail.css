@@ -1,0 +1,13 @@
+
+
+.containerProductDetail{
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    height: 100vh;
+    width: auto;
+}
+
+

@@ -13,7 +13,7 @@ import { Badge } from '@mui/material';
 export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar>
         <Toolbar>
           <IconButton
             
@@ -27,7 +27,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton >
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Wine Virtual
+            Virtual-Wine
           </Typography>
           <Button >
             <Link style={{ textDecoration: 'none', color: 'white', fontWeight: '600' }} to='/'>
