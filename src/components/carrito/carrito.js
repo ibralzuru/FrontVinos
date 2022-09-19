@@ -6,17 +6,10 @@ import { Typography } from '@mui/material';
 
 const Carrito = () => {
   return (
-
-
-    
     <Box sx={{ flexGrow: 1 }}>
-
-<Typography variant="h4" color="ActiveBorder" textAlign={"center"} padding={4}  >
-        Su compra 
+      <Typography variant="h4" color="ActiveBorder" textAlign={"center"} padding={4}  >
+        Su compra
       </Typography>
-
-
-
 
       <Grid container spacing={{ xs: 2, md: 2, sm: 2 }} columns={{ xs: 12, sm: 12, md: 12, lg: 16 }}>
         {Array.from(Array(10)).map((_, index) => (

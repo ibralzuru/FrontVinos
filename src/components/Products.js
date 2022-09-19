@@ -12,7 +12,7 @@ const Products = () => {
       </Typography>
       <Grid container spacing={{ xs: 6, md: 3, sm: 2 }} columns={{ xs: 6, sm: 12, md: 12, lg: 16 }}>
         {Array.from(Array(10)).map((_, index) => (
-          <Grid item xs={6} sm={6} md={4} lg={3} key={index}>
+          <Grid key={index} item xs={6} sm={6} md={4} lg={3} >
             <Product />
           </Grid>
         ))}

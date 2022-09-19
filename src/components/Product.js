@@ -65,7 +65,7 @@ export default function Product() {
           {Array(4)
             .fill()
             .map((_, i) => (
-              <p>&#11088;</p>
+              <p key={i}>&#11088;</p>
             ))}
         </IconButton>
         <ExpandMore

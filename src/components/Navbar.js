@@ -16,12 +16,10 @@ export default function Navbar() {
       <AppBar position="relative">
         <Toolbar>
           <IconButton
-            
             size="large"
             edge="start"
             color="warning"
             aria-label="menu"
-            
             sx={{ mr: 7 }}
           >
             <MenuIcon />
@@ -49,7 +47,7 @@ export default function Navbar() {
               Carrito
             </Link>
           </Button>
-          
+
           <IconButton color="inherit">
             <Badge badgeContent={21}>
               <ShoppingCart />
