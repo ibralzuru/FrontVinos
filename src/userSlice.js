@@ -4,13 +4,13 @@ import jwt from 'jwt-decode';
 
 
 export const userSlice = createSlice({
-    //Nombre que tiene el slice
+   
     name: 'user',
     initialState: {
         token:""
     },
 
-    //El reducer login recibe un estado y una accion, el estado sera la copia del estado anterior, la accion son los nuevos datos que estan entrando que se ejecutan con .payload
+   
     reducers: {
         login: (state,action) => {
             return {
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
                 ...action.payload
             }
         },
-        //El reducer logout recibe un estado y una accion, solo se ejecutara el estado que sera = que el initialState osea sin token
+  
         logout: (state,action) => {
             return{
                 token: ""
@@ -33,25 +33,25 @@ export const userSlice = createSlice({
     },
 });
 
-//Exporto loginUser (necesito que me la expliquen)
+
 export const loginUser = (body) => async (dispatch) => {
 
     try {
-        //Utilizo axios
+     
         const user = await axios.post("http://localhost:8000/api/login", body)
-        //Console.log para que me muestre los datos del usuario (id/user/token)
+
         console.log("Soy user",user)
 
-        //Decodifico el token
+    
         let decodificada = jwt(user.data.token)
 
-        //Si me devuelve un 200 hago el login y decodifico el token.
+    
         if(user.status === 200){
             dispatch(login({...decodificada,token: user.data.token}))
         }
 
     } catch (error) {
-        //Como retorno este error en un setMsgError?
+     
         console.log(error.response.data.message)
     }
 }
@@ -63,44 +63,7 @@ export const logOut = () => (dispatch) => {
 }
 
 
-/* //Update user
-export const updateUser = (datosUsuario,perfilUsuario) => async (dispatch) =>{
-    try {
-        let body = {
-            name: perfilUsuario.user_name,
-            surname: perfilUsuario.user_surname,
-            email: perfilUsuario.user_email,
-            address: perfilUsuario.user_address,
-            city: perfilUsuario.user_city,
-            mobile: perfilUsuario.user_mobile,
-            password: perfilUsuario.user_password
-            
-        }
-        console.log(body)
 
-        let config = {
-            headers: {Authorization: `Bearer ${datosUsuario.token}`}
-        };
-
-        let resultado = await axios.put(`https://buscadordepeliculas.herokuapp.com/api/users/${datosUsuario.user_id}`,body, config);
-        console.log(resultado)
-
-        if(resultado.status === 200) {
-            //Si el usuario cambia email o password le fuerzo un logout
-           if(datosUsuario.user_email !== body.email || datosUsuario.user_password !== body.password){
-            console.log("datosusuario",datosUsuario.user_email)
-            dispatch(logout())
-           }else{
-            dispatch(update({perfilUsuario}));
-           }
-            //Hacemos un update local de las credenciales del usuario
-            
-          }
-    
-    } catch (error) {
-        console.log(error)
-    }
-} */
 
 //Exporto los reducers login,logout
 export const {login,logout,update} = userSlice.actions;
