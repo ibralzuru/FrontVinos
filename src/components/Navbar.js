@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+//import MenuIcon from '@mui/icons-material/Menu';
 import { ShoppingCart } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 
@@ -15,7 +15,7 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="relative">
         <Toolbar>
-          <IconButton
+          {/*  <IconButton
             size="large"
             edge="start"
             color="warning"
@@ -23,9 +23,9 @@ export default function Navbar() {
             sx={{ mr: 7 }}
           >
             <MenuIcon />
-          </IconButton >
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Virtual-Wine
+          </IconButton > */}
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            Virtual Wine
           </Typography>
           <Button >
             <Link style={{ textDecoration: 'none', color: 'white', fontWeight: '600' }} to='/'>
@@ -44,14 +44,12 @@ export default function Navbar() {
           </Button>
           <Button >
             <Link style={{ textDecoration: 'none', color: 'white', fontWeight: '600' }} to='/carrito'>
-              Carrito
+              <Badge badgeContent={28}>
+                <ShoppingCart />
+              </Badge>
             </Link>
           </Button>
-
           <IconButton color="inherit">
-            <Badge badgeContent={21}>
-              <ShoppingCart />
-            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>

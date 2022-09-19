@@ -63,7 +63,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Stack spacing={2} sx={{ maxWidth: '400px', margin: 'auto' }}>
+    <Stack spacing={2} sx={{ maxWidth: '400px', margin: 'auto'  }}>
       <h1>Iniciar sesión</h1>
       <div className='formulario-login'>
         <Stack spacing={1} >
