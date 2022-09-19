@@ -7,6 +7,7 @@ import {  loginUser, userData } from '../userSlice';
 
 
 
+
 const LoginForm = () => {
   /*   const [datos, setDatos] = useState({
         nombre:'',
@@ -75,7 +76,7 @@ const LoginForm = () => {
     return (
 
         <div className='contenedor-login'>
-            
+            <h1>HOLAAAAAAAAAAAAAAAAAAAAA</h1>
             <div className='formulario-login'>
                 <input className='inputLogin' type='email' name='email' title='email' placeholder='Escribe tu Email' onChange={updateCredentials} />
                 <input className='inputLogin' type='password' name='password' title='password' placeholder='Contraseña' onChange={updateCredentials} />
