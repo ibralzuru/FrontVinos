@@ -7,14 +7,14 @@ import { Typography } from '@mui/material';
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([])
+  const [productsRes, setProductsRes] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get("http://localhost:8000/product/get");
-        setData(response);
+        const { data: response } = await axios.get("http://localhost:8000/api/product/get");
+        setProductsRes(response);
       } catch (error) {
         console.error(error.message);
       }
@@ -24,7 +24,7 @@ const Products = () => {
     fetchData();
   }, []);
 
-  console.log("DATA: ", data)
+  console.log("DATA: ", productsRes)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -36,11 +36,16 @@ const Products = () => {
 
       {!loading && (
         <Grid container spacing={{ xs: 6, md: 3, sm: 2 }} columns={{ xs: 6, sm: 12, md: 12, lg: 16 }}>
-          {data.map((item, index) => {
+          {productsRes.data.map((item, index) => {
             console.log("ITEM: ", item)
             return (
               <Grid key={index} item xs={6} sm={6} md={4} lg={3} >
-                <Product />
+                <Product 
+                name={item.name}
+                images={item.images}
+                precio={item.precio} 
+                description={item.description}
+                />
               </Grid>
             )
           }

@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton/* , { IconButtonProps } */ from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AddShoppingCart } from '@mui/icons-material';
@@ -24,7 +24,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function Product() {
+export default function Product({name,precio,images,description}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -40,21 +40,21 @@ export default function Product() {
             variant='h5'
             color='textSecondary'
           >
-            {accounting.formatMoney(8, "€")}
+            {accounting.formatMoney(precio, "€")}
           </Typography>
         }
-        title="Celeste"
-        subheader="Ribera del Duero"
+        title={name}
+        subheader=""
       />
       <CardMedia
         component="img"
         height="194"
-        image="https://admin.bodeboca.com/sites/default/files/bot-celeste-roble-2016_1_0_0_0_0_0_0.jpg"
-        alt="foto vino celeste"
+        image={images}
+        alt="foto vino "
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Color cereza oscuro y bien cubierto. Intenso aroma de frutos negros (cerezas), con un fino matiz ahumado.
+         {description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -79,23 +79,10 @@ export default function Product() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Typography paragraph>Maridaje</Typography>
           <Typography paragraph>
             Para recetas con carnes, cordero asado, todo tipo de aves, estofados y guisos. Servir entre 14-16ºC.
-          </Typography>
-          <Typography paragraph>
-            Origen: DO Ribera del Duero.
-            Puede disfrutarlo desde ahora, bien conservado aguantará 3-5 años.
-            Graduación: 13,5% vol.
-          </Typography>
-          <Typography paragraph>
-            Origen: DO Ribera del Duero.
-            Puede disfrutarlo desde ahora, bien conservado aguantará 3-5 años.
-            Graduación: 13,5% vol.
-          </Typography>
-          <Typography>
-            Origen: DO Ribera del Duero.
-          </Typography>
+          </Typography>    
         </CardContent>
       </Collapse>
     </Card>
