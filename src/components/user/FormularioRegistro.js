@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Button, TextField, Stack } from '@mui/material'
+import { Button, TextField, Stack, Typography } from '@mui/material'
 
 const FormularioRegistro = (props) => {
-  //HOOK con los datos a rellenar
+
   const [userDades, setUserDades] = useState({
     name: '',
     email: '',
@@ -19,27 +19,26 @@ const FormularioRegistro = (props) => {
   const [registrado, setRegistrado] = useState('');
   const [msgError, setMsgError] = useState('');
 
-  //variable
+
   let navigate = useNavigate();
 
-  //HANDLERS
+
 
   const updateUserDades = (e) => {
     setUserDades({ ...userDades, [e.target.name]: e.target.value })
   }
 
-  //Creamos por primera vez el componente con este useEffect.
   useEffect(() => {
 
   }, [])
 
-  //Con este useEffect, cada vez que se modifica algo, se actualiza.
+
   useEffect(() => {
 
   })
 
   const Registrate = async () => {
-    //Primero, comprobación de campos vacíos
+
     let datos = ['name', 'email', 'password', ' address', 'phoneNumber', 'apellido', 'segundoApellido'];
 
     for (let field of datos) {
@@ -48,36 +47,35 @@ const FormularioRegistro = (props) => {
         return;
       }
     }
-    //Con esto válidamos que el email este correctamente.
+
     if (!userDades.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)) {
       setMsgError('introduce un email válido!');
       return;
     }
 
-    //Validar telf correcto
+
     if (!userDades.phoneNumber.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$/)) {
       setMsgError('el telefono tiene que ser correcto!');
       return;
     }
 
-    //La pasword tiene que ser de un tamaño especificado, en este caso entre 6 y 10 digitos.
+
     if (userDades.password.length < 6 || userDades.password.length > 10) {
 
       setMsgError("La password tiene que ser entre 6 y 10 digitos");
       return;
     }
-    //La password requiere un caracter especial.
+
     if (!userDades.password.match(/^(?=.*[*@!#%&()^~{}]).*$/)) {
 
       setMsgError("falta un caracter especial en la password ejemplo [ *@!#%&()^~{} ]");
       return;
     }
 
-    //enviamos los datos a la base de datos 
+
     let intentoRegistro = await axios.post("http://localhost:8000/api/register", userDades);
 
-    //si el registro realizado es correcto, es decir es igual a un 200, nos 
-    //redirigira al side Login para que te logees en la web
+
     if (intentoRegistro.status === 200) {
 
       setRegistrado(true);
@@ -102,7 +100,9 @@ const FormularioRegistro = (props) => {
       <div className='registerDesign'>
         <div className='subRegisterDesign'>
           <Stack spacing={1} sx={{ maxWidth: '400px', margin: 'auto' }}>
-            <h1>Formulario de Registro</h1>
+            <Typography variant="h4" color="ActiveBorder" padding={5} textAlign="center">
+              Formulario de Registro
+            </Typography>
             <TextField className='bottonDesign' placeholder='name' type='text' name='name' title='name' onChange={updateUserDades} />
             <TextField className='bottonDesign' placeholder='email' type='email' name='email' title='email' onChange={updateUserDades} />
             <TextField className='bottonDesign' placeholder='Password' type='password' name='password' title='password' onChange={updateUserDades} />
@@ -114,7 +114,7 @@ const FormularioRegistro = (props) => {
               {msgError}
             </div>
             <div className='divBotton'>
-              <Button variant="contained" onClick={() => Registrate()}>Crear Cuenta</Button>
+              <Button variant="contained" sx={{ margin: 'auto', width: '28.5em' }} onClick={() => Registrate()}>Crear Cuenta</Button>
             </div>
           </Stack>
         </div >

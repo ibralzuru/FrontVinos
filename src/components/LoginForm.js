@@ -1,9 +1,10 @@
 
-import { TextField, Button, Stack, } from '@mui/material'
+import { TextField, Button, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, userData } from '../userSlice';
+
 
 const LoginForm = () => {
   /*   const [datos, setDatos] = useState({
@@ -45,7 +46,7 @@ const LoginForm = () => {
 
     if (credentials.password.length > 4) {
       if (! /[\d()+-]/g.test(credentials.password)) {
-    
+
         setMsgError("Introduce un password valido");
         return;
       }
@@ -63,15 +64,29 @@ const LoginForm = () => {
   }
 
   return (
-    <Stack spacing={2} sx={{ maxWidth: '400px', margin: 'auto'  }}>
-      <h1>Iniciar sesión</h1>
-      <div className='formulario-login'>
-        <Stack spacing={1} >
+
+
+    <Stack spacing={0} sx={{ maxWidth: '400px', margin: 'auto' ,height:'40em',  width: '50em' }}>
+
+      <div
+
+        style={{
+          
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)'
+        }}
+        className='formulario-login'>
+        <Stack spacing={3}sx={{ textAlign:'center'}} >
+        <Typography variant="h4" color="ActiveBorder" padding={5} textAlign="center">
+       Iniciar sesión
+      </Typography>
           <TextField className='inputLogin' type='email' name='email' title='email' placeholder='Escribe tu Email' onChange={updateCredentials} />
           <TextField className='inputLogin' type='password' name='password' title='password' placeholder='Contraseña' onChange={updateCredentials} />
           <div className='msgErrorLogin'>{msgError}</div>
           <div className="loginButton" onClick={() => logueame()}>
-            <Button variant="contained">
+            <Button variant="contained" sx={{  margin: 'auto' , width: '27em' }}>
               Iniciar sesión
             </Button>
           </div>
