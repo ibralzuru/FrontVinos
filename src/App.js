@@ -19,7 +19,7 @@ export default function App() {
           <Route path="/registro" element={<FormularioRegistro />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/detalle" element={<ProductDetail />} />
+          <Route path="/detalle/:id" element={<ProductDetail />} />
         </Routes >
       </Container>
       <MenuBurguer />
