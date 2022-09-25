@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../ProductDetail/ProductDetail'
-/* import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { userData } from '../User/userSlice';
-import { takeData } from './detailSlice';
-import axios from 'axios'; */
+//import axios from 'axios'; 
 import CssBaseline from '@mui/material/CssBaseline';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,15 +7,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import '../ProductDetail/ProductDetail.css'
 import { AddShoppingCart } from '@mui/icons-material';
-import { CardHeader, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import accounting from 'accounting';
+import { useDispatch } from 'react-redux';
+import { addProduct } from './carritoSlice';
+import '../ProductDetail/ProductDetail.css'
 
 const ProductDetail = () => {
   const { id } = useParams()
+  let dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [productRes, setProductRes] = useState([])
 
@@ -29,7 +26,7 @@ const ProductDetail = () => {
       setLoading(true);
       try {
         const { data: response } = await axios.get(`http://localhost:8000/api/product/get/${id}`);
-        setProductRes(response);
+        setProductRes(response.data);
       } catch (error) {
         console.error(error.message);
       }
@@ -39,6 +36,16 @@ const ProductDetail = () => {
     fetchData();
   }, [id]);
 
+  //funcion guardar producto en redux
+  const addProductToCart = (producto) => {
+    const productData = {
+      producto_id: producto.id,
+      name: producto.name,
+      precio: producto.precio,
+      unidades: 1
+    }
+    dispatch(addProduct(productData));
+  }
 
   return (
     <div className="containerProductDetail">
@@ -48,39 +55,28 @@ const ProductDetail = () => {
         <>
           <CssBaseline />
           <Container maxWidth="sm">
-            <Card sx={{ maxWidth: 315, minWidth: 10 }}>
-              <CardHeader
-                action={
-                  <Typography
-                    variant='h5'
-                    color='textSecondary'
-                  >
-                    {accounting.formatMoney(productRes.data.precio, "€")}
-                  </Typography>
-                }
 
-              />
+            <Card sx={{ maxWidth: 'auto', minHeight: '20em' }}>
               <CardMedia
                 component="img"
                 height="auto"
-                image={productRes.data.images}
-                alt={productRes.data.description}
-                loading="lazy"
+                image={productRes.images}
+                alt={productRes.description}
               />
               <CardContent>
-                <Typography gutterBottom variant="h4" component="div" textAlign="center">
-                  {productRes.data.name}
+                <Typography gutterBottom variant="h4" component="div">
+                  {productRes.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {productRes.data.description}
+                  {productRes.description}
                 </Typography>
               </CardContent>
               <CardActions>
-                <IconButton aria-label="add to Cart" >
+                <IconButton aria-label="add to Cart" onClick={() => addProductToCart(productRes)} >
                   <AddShoppingCart fontSize='large' />
                 </IconButton>
                 <IconButton>
-                  {Array(4)
+                  {Array(5)
                     .fill()
                     .map((_, i) => (
                       <p key={i}>&#11088;</p>
@@ -90,9 +86,6 @@ const ProductDetail = () => {
             </Card>
           </Container>
         </>
-
-
-
       )}
     </div>
 
