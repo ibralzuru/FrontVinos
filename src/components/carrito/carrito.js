@@ -17,16 +17,22 @@ const Carrito = () => {
     try {
       const body = {
         direccion: "C/Atic, 29, 28080, Barcelona",
-        monto_total: montoTotal,
+        monto_total: montoTotal.toString(),
         estado: "pendiente",
         pago_id: '1',
         products: cart.products
       }
-      const headers = {}
-      const pedido = await axios.post("http://localhost:8000/api/pedido/create", body, headers);
+      
+      const pedido = await axios.post("http://localhost:8000/api/pedido/create", body, {
+        headers: {
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user')).token
+        }
+    });
       console.log(pedido)
+      alert('Pedido realizado correctamente')
     } catch (error) {
       console.error(error.message);
+      alert('Error al realizar pedido')
     }
   }
 
