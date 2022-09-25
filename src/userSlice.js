@@ -1,3 +1,4 @@
+import { useRadioGroup } from '@mui/material';
 import {createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwt from 'jwt-decode';
@@ -47,6 +48,7 @@ export const loginUser = (body) => async (dispatch) => {
 
     
         if(user.status === 200){
+            localStorage.setItem('user', user.data ? JSON.stringify(user.data) : null);
             dispatch(login({...decodificada,token: user.data.token}))
         }
 
