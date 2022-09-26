@@ -1,4 +1,4 @@
-import { useRadioGroup } from '@mui/material';
+//import { useRadioGroup } from '@mui/material';
 import {createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwt from 'jwt-decode';
@@ -34,8 +34,28 @@ export const userSlice = createSlice({
     },
 });
 
-
 export const loginUser = (body) => async (dispatch) => {
+
+    try {
+        //Utilizo axios
+        const user = await axios.post("http://localhost:8000/api/login", body)
+        //Console.log para que me muestre los datos del usuario (id/user/token)
+        console.log("Soy user",user)
+
+        //Decodifico el token
+        let decodificada = jwt(user.data.token)
+
+        //Si me devuelve un 200 hago el login y decodifico el token.
+        if(user.status === 200){
+            dispatch(login({...decodificada,token: user.data.token, user}))
+        }
+
+    } catch (error) {
+        //Como retorno este error en un setMsgError?
+        console.log(error.response.data.message)
+    }
+}
+/* export const loginUser = (body) => async (dispatch) => {
 
     try {
      
@@ -56,7 +76,7 @@ export const loginUser = (body) => async (dispatch) => {
      
         console.log(error.response.data.message)
     }
-}
+} */
 
 
 //Exporto logOut que simplemente me devuelve el initialState del token y a si permite que el usuario se desloguee
@@ -64,7 +84,41 @@ export const logOut = () => (dispatch) => {
     dispatch(logout())
 }
 
+//Update user
+export const updateUser = (dataUser,perfilUsuario) => async (dispatch) =>{
+    try {
+        let body = {
+            name: perfilUsuario.user_name,
+            surname: perfilUsuario.user_surname,
+            email: perfilUsuario.user_email,
+            address: perfilUsuario.user_address,
+            city: perfilUsuario.user_city,
+            mobile: perfilUsuario.user_mobile,
+            password: perfilUsuario.user_password
+            
+        }
+        console.log(body)
+        console.log("brooooo",dataUser)
+        let config = {
+            headers: {Authorization: `Bearer ${dataUser.token}`}
+        };
 
+        let resultado = await axios.put(`http://localhost:8000/api/profile/update/${dataUser.user.data.user.id}`,body, config);
+        console.log(resultado)
+
+        if(resultado.status === 200) {
+            //Si el usuario cambia email o password le fuerzo un logout
+          
+            dispatch(update({perfilUsuario}));
+           
+            //Hacemos un update local de las credenciales del usuario
+            
+          }
+    
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 //Exporto los reducers login,logout

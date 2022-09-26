@@ -7,6 +7,7 @@ import Carrito from "./components/carrito/Carrito";
 import FormularioRegistro from "./components/user/FormularioRegistro";
 import MenuBurguer from "./components/menuBurguer/MenuBurguer";
 import ProductDetail from "./containers/ProductDetail/ProductDetail";
+import UpdateUser from "./components/user/UpdateUser"
 import './App.css';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/detalle/:id" element={<ProductDetail />} />
+          <Route path="/update/profile/" element={<UpdateUser />} />
         </Routes >
       </Container>
       <MenuBurguer />
