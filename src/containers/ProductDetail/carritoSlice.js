@@ -20,7 +20,8 @@ export const addProduct = (producto) => async (dispatch) => {
 };
 
 
-//Exporto las funciones que en si realizan la accion
+
+
 export const { addProductToCarrito } = carritoSlice.actions;
 
 

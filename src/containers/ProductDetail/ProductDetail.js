@@ -8,12 +8,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { AddShoppingCart } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { CardHeader, IconButton } from '@mui/material';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addProduct } from './carritoSlice';
 import '../ProductDetail/ProductDetail.css'
+import accounting from 'accounting';
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -54,10 +55,23 @@ const ProductDetail = () => {
       {!loading && (
         <>
           <CssBaseline />
-          <Container maxWidth="sm">
+          <Container maxWidth="xs">
 
-            <Card sx={{ maxWidth: 'auto', minHeight: '20em' }}>
+            <Card sx={{ maxWidth: 'auto', padding: '1em', marginTop: '2em' }}>
+              <CardHeader
+                action={
+                  <Typography
+                    variant='h5'
+                    color='textSecondary'
+                  >
+                    {accounting.formatMoney(productRes.precio, "€")}
+                  </Typography>
+                }
+          
+              />
               <CardMedia
+
+
                 component="img"
                 height="auto"
                 image={productRes.images}
